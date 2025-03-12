@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Reserva</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('../img/piedraguata.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header y navegación */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: white;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            width: 80px;
+            height: 70px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .bienvenida {
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .nombre-empresa {
+            font-weight: bold;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        /* Navegación */
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        nav ul li {
+            margin-left: 15px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            padding: 12px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-size: 16px;
+            display: inline-block;
+            color: #333;
+        }
+        
+        nav ul li a:hover {
+            background-color: #7fc282;
+            color: rgb(0, 0, 0);
+        }
+        
+        /* Estilos personalizados para cada botón */
+        .btn-inicio, .btn-servicios {
+            color: #000000;
+            background: transparent;
+        }
+        
+        .btn-inicio:hover, .btn-servicios:hover {
+            background-color: #7fc282;
+            color: rgb(0, 0, 0);
+        }
+
+        .btn-contacto {
+            color: #000000;
+            background: transparent;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .btn-contacto:hover {
+            background-color: #1B5E20;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-login {
+            background-color: #7fc282;
+            color: rgb(0, 0, 0) !important;
+        }
+        
+        .btn-login:hover {
+            background-color: #1B5E20;
+            color: white !important;
+            transform: translateY(-3px);
+        }
+
+        /* NUEVO ESTILO PARA EL FORMULARIO DE RESERVA */
+        .reservation-form-container {
+            background: rgba(255, 255, 255, 0.782);
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .reservation-form-container h2 {
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #333;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .required::after {
+            content: " *";
+            color: red;
+        }
+
+        .submit-btn {
+            background-color: #50b055;
+            color: black;
+            font-weight: bold;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 200px;
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .submit-btn:hover {
+            background-color: #18481b;
+            color: white!important;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #e8f4e8;
+            padding: 30px 50px;
+            color: #333;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-footer-img {
+            width: 70px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background-color: #ccc;
+            margin: 20px 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header y navegación -->
+    <header>
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo Medallo Tour" class="logo-img">
+            <div class="logo-text">
+                <span class="bienvenida">Bienvenidos a</span>
+                <span class="nombre-empresa">Medallo tour</span>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" id="inicio-link" class="btn-inicio">Inicio</a></li>
+                <li><a href="reservass.html" id="servicios-link" class="btn-servicios">Servicios</a></li>
+                <li><a href="contactanos.html" id="contactanos-link" class="btn-contacto">Contáctanos</a></li>
+                <li><a href="login.html" id="admin-link" class="btn-login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Nuevo formulario de reserva -->
+    <div class="reservation-form-container">
+        <h2>Reserva tu Tour</h2>
+        <form id="reservaForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="titular" class="required">Titular:</label>
+                    <input type="text" id="titular" name="titular" placeholder="Nombre del titular" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipo-id" class="required">Tipo de ID:</label>
+                    <select id="tipo-id" name="tipo_id" required>
+                        <option value="">Selecciona...</option>
+                        <option value="CC">Cédula</option>
+                        <option value="# iD">Número de Documento</option>
+                        <option value="TI">Tarjeta de Identidad</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                        <option value="Permiso de permanencia">PPT</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="num-documento" class="required">Número de documento:</label>
+                    <input type="text" id="num-documento" name="num_documento" placeholder="Ingresa tu número de documento" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="telefono" class="required">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Número de teléfono" required>
+                </div>
+                <div class="form-group">
+                    <label for="pasajeros" class="required">Cantidad de Pasajeros:</label>
+                    <input type="number" id="pasajeros" name="pasajeros" min="1" placeholder="Número de pasajeros" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fecha" class="required">Fecha del Tour:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+                <div class="form-group">
+                    <label for="tour" class="required">Tour Elegido:</label>
+                    <select id="tour" name="tour" required>
+                        <option value="">Selecciona...</option>
+                        <option value="guatape">Tour Guatapé</option>
+                        <option value="graffiti">Graffiti Tour + City Tour</option>
+                        <option value="cafe">Tour del Café</option>
+                        <option value="ciudad">Tour por la ciudad</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="hotel">Hotel de Recogida:</label>
+                    <input type="text" id="hotel" name="hotel" placeholder="Nombre del hotel">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="acompanantes">Acompañantes (Opcional):</label>
+                <textarea id="acompanantes" name="acompanantes" placeholder="Nombres de los acompañantes" rows="3"></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Reservar</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Logo y texto de bienvenida -->
+            <div class="footer-logo">
+                <img src="img/logo.png" alt="Logo Footer" class="logo-footer-img">
+                <p>Bienvenidos a<br>Medallo tour</p>
+            </div>
+            
+            <!-- Enlaces -->
+            <div class="footer-section">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contacto -->
+            <div class="footer-section">
+                <h3>Contac</h3>
+                <p>Email: nina@email.com</p>
+                <p>©2025Darknex.AllRightsReserved</p>
+            </div>
+            
+            <!-- Redes sociales -->
+            <div class="footer-section">
+                <h3>FOLLOW US</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Separador -->
+        <div class="footer-divider"></div>
+        
+        <!-- Footer inferior -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-links">
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Accessibility Statement</a>
+            </div>
+            <div class="footer-copyright">
+                <p>©2025Darknex.AllRightsReserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js">
+        // Esperar a que todo el documento esté cargado
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtenemos referencias a los elementos del DOM
+    const formulario = document.getElementById('reservaForm');
+    const titularInput = document.getElementById('titular');
+    const tipoIdSelect = document.getElementById('tipo-id');
+    const telefonoInput = document.getElementById('telefono');
+    const pasajerosInput = document.getElementById('pasajeros');
+    const fechaInput = document.getElementById('fecha');
+    const tourSelect = document.getElementById('tour');
+    
+    // Navegación
+    const inicioLink = document.getElementById('inicio-link');
+    const serviciosLink = document.getElementById('servicios-link');
+    const contactanosLink = document.getElementById('contactanos-link');
+    const adminLink = document.getElementById('admin-link');
+    
+    // Configurar la fecha mínima para ser el día actual
+    const hoy = new Date();
+    const yyyy = hoy.getFullYear();
+    const mm = String(hoy.getMonth() + 1).padStart(2, '0');
+    const dd = String(hoy.getDate()).padStart(2, '0');
+    const fechaActual = `${yyyy}-${mm}-${dd}`;
+    fechaInput.min = fechaActual;
+    
+    // Función para validar el formulario
+    function validarFormulario() {
+        let esValido = true;
+        let mensajeError = '';
+        
+        // Validar que el nombre del titular no esté vacío y solo contenga letras
+        if (!titularInput.value.trim()) {
+            mensajeError += 'El nombre del titular es obligatorio.\n';
+            esValido = false;
+        } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/.test(titularInput.value)) {
+            mensajeError += 'El nombre del titular solo debe contener letras.\n';
+            esValido = false;
+        }
+        
+        // Validar que se haya seleccionado un tipo de ID
+        if (!tipoIdSelect.value) {
+            mensajeError += 'Debes seleccionar un tipo de identificación.\n';
+            esValido = false;
+        }
+        if (!tipoIdSelect.value) {
+            mensajeError += 'Debes seleccionar un tipo de identificación.\n';
+            esValido = false;
+        }
+
+        // Validar que el número de documento no esté vacío
+        if (!numDocumentoInput.value.trim()) {
+            mensajeError += 'El número de documento es obligatorio.\n';
+            esValido = false;
+        }
+        // Validar que el teléfono no esté vacío
+        if (!telefonoInput.value.trim()) {
+            mensajeError += 'El número de teléfono es obligatorio.\n';
+            esValido = false;
+        }
+        
+        // Validar cantidad de pasajeros (mínimo 1)
+        if (!pasajerosInput.value || pasajerosInput.value < 1) {
+            mensajeError += 'Debe haber al menos un pasajero.\n';
+            esValido = false;
+        }
+        
+        // Validar fecha del tour (no puede ser en el pasado)
+        if (!fechaInput.value) {
+            mensajeError += 'La fecha del tour es obligatoria.\n';
+            esValido = false;
+        } else {
+            const fechaSeleccionada = new Date(fechaInput.value);
+            const hoy = new Date();
+            hoy.setHours(0, 0, 0, 0);
+            
+            if (fechaSeleccionada < hoy) {
+                mensajeError += 'La fecha del tour no puede ser en el pasado.\n';
+                esValido = false;
+            }
+        }
+        
+        // Validar que se haya seleccionado un tour
+        if (!tourSelect.value) {
+            mensajeError += 'Debes seleccionar un tour.\n';
+            esValido = false;
+        }
+        
+        if (!esValido) {
+            alert(mensajeError);
+        }
+        
+        return esValido;
+    }
+    
+    // Event listener para envío del formulario
+    formulario.addEventListener('submit', function(evento) {
+        // Prevenir el envío del formulario si no pasa la validación
+        if (!validarFormulario()) {
+            evento.preventDefault();
+            return false;
+        }
+        
+        // Si llegamos aquí, el formulario es válido
+        alert('¡Reserva enviada con éxito! Te contactaremos pronto para confirmar los detalles.');
+        
+        // Aquí normalmente enviarías los datos a un servidor mediante AJAX
+        // Como ejemplo, creamos un objeto con los datos del formulario
+        const datosReserva = {
+            titular: titularInput.value,
+            tipo_id: tipoIdSelect.value,
+            num_documento: numDocumentoInput.value,
+            telefono: telefonoInput.value,
+            pasajeros: pasajerosInput.value,
+            fecha: fechaInput.value,
+            tour: tourSelect.value,
+            hotel: document.getElementById('hotel').value,
+            acompanantes: document.getElementById('acompanantes').value
+        };
+        
+        console.log('Datos de la reserva:', datosReserva);
+        
+        // Limpiar el formulario después del envío
+        formulario.reset();
+        
+        return true;
+    });
+    
+    // Funcionalidad para los enlaces de navegación
+    inicioLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'index.html';
+    });
+    
+    serviciosLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'servicios.html';
+    });
+    
+    contactanosLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'contacto.html';
+    });
+    
+    adminLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'login.html';
+    });
+    
+    // Añadir validación en tiempo real
+    titularInput.addEventListener('input', function() {
+        if (!/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]*$/.test(this.value)) {
+            this.style.borderColor = 'red';
+        } else {
+            this.style.borderColor = '';
+        }
+    });
+    
+    // También he eliminado el event listener que restringía la entrada del teléfono a solo números
+    
+    // Limitar la cantidad de pasajeros a un máximo razonable (por ejemplo, 50)
+    pasajerosInput.addEventListener('input', function() {
+        if (this.value > 50) {
+            this.value = 50;
+        }
+    });
+});
+    </script>
+</body>
+</html>

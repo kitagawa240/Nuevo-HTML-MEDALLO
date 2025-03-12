@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva</title>
+    <Style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Encabezado */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            border-bottom: 2px solid #eee;
+            background-color: white;
+            width: 98%; /* Asegura que ocupe todo el ancho */
+            top: 0; /* Lo mantiene en la parte superior */
+            left: 0;
+        }
+
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            width: 80px;
+            height: 70px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .bienvenida {
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .nombre-empresa {
+            font-weight: bold;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        /* Navegación */
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        nav ul li a:hover {
+            background-color:#7fc282;
+            color: rgb(0, 0, 0);
+        }
+
+        nav ul li {
+            margin-left: 15px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            padding: 12px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-size: 16px;
+            display: inline-block;
+            color: #333;
+        }
+
+        
+        /* Estilos personalizados para cada botón */
+        .btn-inicio, .btn-servicios {
+            color: #000000;
+            background: transparent;
+        }
+        .btn-inicio:hover, .btn-servicios:hover {
+            background-color: #7fc282;
+            color: rgb(0, 0, 0);
+        }
+
+        .btn-contacto {
+            color: #1B5E20;
+            background: transparent;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-contacto:hover {
+            background-color: #1B5E20;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-login {
+            background-color:#7fc282;
+            color: rgb(0, 0, 0) !important;
+        }
+        
+        .btn-login:hover {
+            background-color:  #1B5E20;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Botón de contacto */
+        .boton-contacto {
+            display: inline-flex;
+            align-items: center;
+            background-color: transparent;
+            color: #333;
+            padding: 15px 20px;
+            text-decoration: none;
+            margin-bottom: 40px;
+            border: 2px solid #4CAF50;
+            transition: all 0.3s ease;
+        }
+        
+        .boton-contacto:hover {
+            background-color: #4CAF50;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .boton-contacto .flecha {
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .boton-contacto:hover .flecha {
+            transform: translateX(5px);
+        }
+        
+        main {
+            padding-top: 40px; /* Ajusta según el alto del navbar */
+        }
+
+    </Style>
+    <!-- ENCABEZADO Y NAVEGACIÓN -->
+    <header>
+        <div class="logo">
+            <!-- Logo (usando un placeholder circular, reemplazar con tu logo real) -->
+            <img src="img/logo.png" alt="Logo Medallo Tour" class="logo-img">
+            <div class="logo-text">
+                <span class="bienvenida">Bienvenidos a</span>
+                <span class="nombre-empresa">Medallo tour</span>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" id="inicio-link" class="btn-inicio">Inicio</a></li>
+                <li><a href="reservass.html" id="servicios-link" class="btn-servicios">Servicios</a></li>
+                <li><a href="contactanos.html" id="contactanos-link" class="btn-contacto">Contáctanos</a></li>
+                <li><a href="login.html" id="admin-link" class="btn-login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+<!-- Sección de Tours - Agregue este código donde desee mostrar la información de los tours -->
+<section class="tours-section">
+    <div class="tours-container">
+        <h2 class="section-title">Nuestros Tours</h2>
+        <p class="section-description">Descubre las mejores experiencias que Medellín y sus alrededores tienen para ofrecer</p>
+        
+        <div class="tours-grid">
+            <!-- Tour 1: Guatapé -->
+            <div class="tour-card">
+                <div class="tour-image" style="background-image: url('img/guatape.jpg');">
+                    <span class="tour-badge">Más Popular</span>
+                </div>
+                <div class="tour-content">
+                    <h3 class="tour-title">Tour Guatapé</h3>
+                    <p class="tour-description">"Siente la emoción de escalar hasta lo más alto de la Piedra del Peñol y contempla una de las vistas más impresionantes de Colombia.Disfruta de un recorrido por Guatapé y sus coloridas calles, este incluye un deliciosodesayuno y almuerzo, ¡Ven Guatapé te espera con su magia y color, ¡no te lo puedes perder!"</p>
+                    <div class="tour-details">
+                        <div class="detail">
+                            <i class="icon-clock"></i>
+                            <span>Duración: 8 horas</span>
+                        </div>
+                        <div class="detail">
+                            <i class="icon-location"></i>
+                            <span>Distancia: 80 km</span>
+                        </div>
+                        <div class="detail">
+                            <i class="icon-group"></i>
+                            <span>Grupo mínimo: 25 personas</span>
+                        </div>
+                    </div>
+                    <div class="tour-price">
+                        <span class="price">$109.000</span>
+                        <span class="price-detail">por persona</span>
+                    </div>
+                    <button class="tour-button" data-tour="guatape">Reservar Ahora</button>
+                </div>
+            </div>
+            
+            <!-- Tour 2: Graffiti Tour + City Tour -->
+            <div class="tour-card">
+                <div class="tour-image" style="background-image: url('img/grafiti.jpg');">
+                    <span class="tour-badge">Tendencia</span>
+                </div>
+                <div class="tour-content">
+                    <h3 class="tour-title">Graffiti Tour + City Tour</h3>
+                    <p class="tour-description">"Descubre cómo el arte y la resiliencia transformaron la Comuna 13 en un símbolo de esperanza. Cada mural cuenta una historia¡ven y disfruta de su cultura, no te pierdas de ver y disfrutar sus bailes y de probar su gastronomia ven y sé parte de esta experiencia llena de color y cultura!"</p>
+                    <div class="tour-details">
+                        <div class="detail">
+                            <i class="icon-clock"></i>
+                            <span>Duración: 6 horas</span>
+                        </div>
+                        <div class="detail">
+                            <i class="icon-location"></i>
+                            <span>Recorrido urbano</span>
+                        </div>
+                        <div class="detail">
+                            <i class="icon-group"></i>
+                            <span>Grupo mínimo: 20 personas</span>
+                        </div>
+                    </div>
+                    <div class="tour-price">
+                        <span class="price">$90.000</span>
+                        <span class="price-detail">por persona</span>
+                    </div>
+                    <button class="tour-button" data-tour="graffiti">Reservar Ahora</button>
+                </div>
+            </div>
+            
+            <!-- Tour 3: Tour del Café -->
+            <div class="tour-card">
+                <div class="tour-image" style="background-image: url('img/pqcafe2.jpg');">
+                </div>
+                <div class="tour-content">
+                    <h3 class="tour-title">Tour del Café</h3>
+                    <p class="tour-description">"Déjate llevar por la adrenalina y la cultura cafetera en un lugar donde la diversión y la tradición se encuentran.No te lo pierdas, incluye transporte, guia y ademas puedes disfrutar de un delicioso almuerzo ¡El Parque del Café es una experiencia que te hará vibrar!"
+                    </p>
+                    <div class="tour-details">
+                        <div class="detail">
+                            <i class="icon-clock"></i>
+                            <span>Duración: 7 horas</span>
+                        </div>
+                        <div class="detail">
+                            <i class="icon-location"></i>
+                            <span>Distancia:a tan solo 4 horas de Medellín </span>
+                        </div>
+                        <div class="detail">
+                            <i class="icon-group"></i>
+                            <span>Grupo mínimo: 20 personas</span>
+                        </div>
+                    </div>
+                    <div class="tour-price">
+                        <span class="price">$195.000</span>
+                        <span class="price-detail">por persona</span>
+                    </div>
+                    <button class="tour-button" data-tour="cafe">Reservar Ahora</button>
+                </div>
+            </div>
+            
+            <!-- Tour 4: Tour por la ciudad -->
+            <div class="tour-card">
+                <div class="tour-image" style="background-image: url('img/gordis.jpg');">
+                </div>
+                <div class="tour-content">
+                    <h3 class="tour-title">Tour por la Ciudad</h3>
+                    <p class="tour-description">"Vive la esencia de Medellín en cada rincón de la ciudad. Su cultura, su gente y su historia te esperan en un recorrido inolvidable, ven y visita sus conmemorados parques, el maravilloso pueblito paisa ¡Ven y descubre la ciudad de la eterna primavera con nosotros!".</p>
+                    <div class="tour-details">
+                        <div class="detail">
+                            <i class="icon-clock"></i>
+                            <span>Duración: 4 horas</span>
+                        </div>
+                        <div class="detail">
+                            <i class="icon-location"></i>
+                            <span>Centro de Medellín</span>
+                        </div>
+                        <div class="detail">
+                            <i class="icon-group"></i>
+                            <span>Grupo mínimo: 15 persona</span>
+                        </div>
+                    </div>
+                    <div class="tour-price">
+                        <span class="price">$99.000</span>
+                        <span class="price-detail">por persona</span>
+                    </div>
+                    <button class="tour-button" data-tour="ciudad">Reservar Ahora</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="footer-container">
+        <!-- Logo y texto de bienvenida -->
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Logo Footer" class="logo-footer-img">
+            <p>Bienvenidos a<br>Medallo tour</p>
+        </div>
+        
+        <!-- Enlaces -->
+        <div class="footer-section">
+            <h3>Links</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        
+        <!-- Contacto -->
+        <div class="footer-section">
+            <h3>Contac</h3>
+            <p>Email: nina@email.com</p>
+            <p>©2025Darknex.AllRightsReserved</p>
+        </div>
+        
+        <!-- Redes sociales -->
+        <div class="footer-section">
+            <h3>FOLLOW US</h3>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Twitter</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Separador -->
+    <div class="footer-divider"></div>
+    
+    <!-- Footer inferior -->
+    <div class="footer-bottom">
+        <div class="footer-bottom-links">
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Accessibility Statement</a>
+        </div>
+        <div class="footer-copyright">
+            <p>©2025Darknex.AllRightsReserved.</p>
+        </div>
+    </div>
+</footer>
+<style>
+    /* Estilos para la sección de Tours - Agregar al archivo CSS o en la sección de estilos */
+
+.tours-section {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+}
+
+.tours-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.section-description {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.tours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.tour-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tour-card:hover {
+    transform: scale(1.05);
+}
+
+.tour-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.tour-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #7fc282;
+    color: #000;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.tour-content {
+    padding: 20px;
+}
+
+.tour-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.tour-description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.tour-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+.detail {
+    display: flex;
+    align-items: center;
+}
+
+.detail i {
+    margin-right: 5px;
+    color: #7fc282;
+}
+
+.tour-price {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1B5E20;
+    margin-right: 5px;
+}
+
+.price-detail {
+    font-size: 14px;
+    color: #666;
+}
+
+.tour-button {
+    width: 100%;
+    background-color: #7fc282;
+    color: black;
+    border: none;
+    padding: 12px 0;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tour-button:hover {
+    background-color: #1B5E20;
+    color: white;
+}
+
+/* Iconos (puedes usar Font Awesome o similar) */
+.icon-clock::before {
+    content: "🕒";
+}
+
+.icon-location::before {
+    content: "📍";
+}
+
+.icon-group::before {
+    content: "👥";
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tours-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .section-description {
+        font-size: 16px;
+    }
+}
+              /* =================== ESTILOS DEL FOOTER =================== */
+
+        /* Estilos del footer */
+        .footer {
+            background-color: #e8f4e8;
+            padding: 30px 50px;
+            color: #333;
+            margin-top: auto; /* Asegura que el footer esté en la parte inferior */
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        /* Logo y texto */
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .logo-footer {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .logo-footer-img {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        .footer {
+            background-color: #e8f4e8;
+            padding: 30px 50px;
+            color: #333;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-footer-img {
+            width: 70px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background-color: #ccc;
+            margin: 20px 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            text-decoration: none;
+            color: #333;
+        }
+
+</style>
